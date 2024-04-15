@@ -35,13 +35,13 @@ namespace WeatherDataGenerator.Models
                     WeatherData data = new WeatherData();
                     data.DayOfWeek = day_of_week[new Random().Next(day_of_week.Length)];
                     data.Weather = weather[new Random().Next(weather.Length)];
-                    data.LowestTemp = GenerateTemperature(monthIndex, true);
-                    data.HighestTemp = GenerateTemperature(monthIndex, false);
+                    data.LowestTemp = Math.Round(GenerateTemperature(monthIndex, true), 1);
+                    data.HighestTemp = Math.Round(GenerateTemperature(monthIndex, false), 1);
                     data.Pressure = rnd.Next(980, 1020);
                     data.Humidity = rnd.Next(50, 100);
-                    data.Wind = new Wind { Speed = rnd.NextDouble() * 20, Deg = rnd.Next(0, 360) };
-                    data.Visibility = rnd.NextDouble() * 100;
-                    data.Clouds = rnd.NextDouble() * 100;
+                    data.Wind = new Wind { Speed = Math.Round(rnd.NextDouble() * 20, 1), Deg = rnd.Next(0, 360) };
+                    data.Visibility = Math.Round(rnd.NextDouble() * 100, 1);
+                    data.Clouds = Math.Round(rnd.NextDouble() * 100, 1);
 
                     weeklyWeather[i] = data;
                 }
